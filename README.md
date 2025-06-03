@@ -35,3 +35,12 @@ Default module structure is as follows
 └── CMakeLists.txt (template: template.CMakeLists.txt)
 ```
 
+## Patterns replaced
+
+Following pattern pairs are used for replacing
+
+| Pattern | Replacement |
+|---|---|
+| @MODULE_NAME@ | Inputted module name in whatever case was used |
+| @MODULE_NAME_UPPER@ | Inputted module name in uppercase |
+| @MODULE_NAME_LOWER@ | Inputted module name in lowercase |
