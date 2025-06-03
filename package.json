@@ -3,12 +3,16 @@
   "displayName": "C/C++ Module Creator",
   "description": "",
   "version": "0.0.666",
+  "author": "Simo Janhunen",
+  "publisher": "simojanhunen",
+  "repository": "https://github.com/simojanhunen/c-cpp-module-creator",
   "engines": {
     "vscode": "^1.100.0"
   },
   "categories": [
     "Other"
   ],
+  "license": "(MIT OR Apache-2.0)",
   "main": "./out/extension.js",
   "contributes": {
     "commands": [
