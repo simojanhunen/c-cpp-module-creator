@@ -1,0 +1,53 @@
+{
+  "name": "c-cpp-module-creator",
+  "displayName": "C/C++ Module Creator",
+  "description": "",
+  "version": "0.0.666",
+  "engines": {
+    "vscode": "^1.100.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "c-cpp-module-creator.createModule",
+        "title": "New C++ Module..."
+      },
+      {
+        "command": "c-cpp-module-creator.refreshTemplates",
+        "title": "C/C++ Module Creator: Refresh Template Cache"
+      }
+    ],
+    "menus": {
+      "explorer/context": [
+        {
+          "command": "c-cpp-module-creator.createModule",
+          "group": "navigation",
+          "when": "explorerResourceIsFolder"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.100.0",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "20.x",
+    "@typescript-eslint/eslint-plugin": "^8.31.1",
+    "@typescript-eslint/parser": "^8.31.1",
+    "eslint": "^9.25.1",
+    "typescript": "^5.8.3",
+    "@vscode/test-cli": "^0.0.10",
+    "@vscode/test-electron": "^2.5.2"
+  }
+}
