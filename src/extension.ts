@@ -157,12 +157,12 @@ async function createModuleStructure(context: vscode.ExtensionContext, baseDir: 
 
     // Create files with templates
     for (const file of files) {
-        const content = await getTemplateContent(context, file.template, moduleName);
+        const content = await getTemplateContent(context, file.template, baseDir, moduleName);
         fs.writeFileSync(file.path, content);
     }
 }
 
-async function getTemplateContent(context: vscode.ExtensionContext, templateName: string, moduleName: string): Promise<string> {
+async function getTemplateContent(context: vscode.ExtensionContext, templateName: string, parentPath: string, moduleName: string): Promise<string> {
     // Cache template directories to avoid repeated filesystem searches
     if (!context.globalState.get('templateDirs')) {
         const workspaceFolders = vscode.workspace.workspaceFolders;
@@ -188,14 +188,22 @@ async function getTemplateContent(context: vscode.ExtensionContext, templateName
         try {
             if (fs.existsSync(templatePath)) {
                 const lowerModuleName = moduleName.toLowerCase();
-                const upperModuleName = moduleName.toUpperCase();
+                const capitalizeModuleName = moduleName.replaceAll(/[-_]/g, " ")
+                    .split(" ")
+                    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+                    .join(" ");
+                const namespaceModuleName = lowerModuleName.replaceAll("-", "_");
+                const lowerParentDir = parentPath?.split(/[/\\]/).pop()?.toLowerCase() ?? "undefined_parent";
 
                 // TODO: Improve replacing, introduce user options
                 // Replace placeholders
                 let content = fs.readFileSync(templatePath, 'utf8');
-                content = content.replace(/@MODULE_NAME@/g, moduleName);
-                content = content.replace(/@MODULE_NAME_UPPER@/g, lowerModuleName);
-                content = content.replace(/@MODULE_NAME_LOWER@/g, upperModuleName);
+
+                content = content.replace(/@CAPITALIZE@/g, capitalizeModuleName); // Replace "-", "_" with " ", capitalize words
+                content = content.replace(/@NAMESPACE@/g, namespaceModuleName); // Replace "-"" with "_", lowercase
+                content = content.replace(/@TARGET_NAME@/g, lowerModuleName); // Lowercase, keep dashes and underscores
+                content = content.replace(/@MODULE_NAME@/g, moduleName); // Don't modify it
+                content = content.replace(/@PARENT@/g, lowerParentDir); // Lowercase, keep dashes and underscores
                 return content;
             }
         } catch (error) {

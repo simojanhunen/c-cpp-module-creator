@@ -41,6 +41,17 @@ Following pattern pairs are used for replacing
 
 | Pattern | Replacement |
 |---|---|
-| @MODULE_NAME@ | Inputted module name in whatever case was used |
-| @MODULE_NAME_UPPER@ | Inputted module name in uppercase |
-| @MODULE_NAME_LOWER@ | Inputted module name in lowercase |
+| @MODULE_NAME@ | Inputted module name in whatever case and shape was used |
+| @TARGET_NAME@ | Inputted module name in lowercase |
+| @NAMESPACE@ | Inputted module name in lowercase with dashes replaced with underscores |
+| @CAPITALIZE@ | Inputted module name capitalized with underscores and dashes replaced with spacing |
+| @PARENT@ | Target directory name |
+
+## TODOs
+
+- User configurability
+    - Template file naming mapped to a directory structure
+    - Where to look for things, instead of recursive search
+    - The depth of looking recursively
+    - Custom find+replace options
+- Sniffing parent CMakeLists.txt to add_subdirectory call there
