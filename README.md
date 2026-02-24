@@ -1,4 +1,9 @@
-<h1><img src="assets/icon-transparent.png" alt="C/C++ Module Creator icon" width="48" height="48" style="vertical-align: middle" /> <span style="vertical-align: middle">C/C++ Module Creator</span></h1>
+<table>
+<tr>
+<td valign="middle"><img src="assets/icon-transparent.png" alt="C/C++ Module Creator icon" width="48" height="48" /></td>
+<td valign="middle"><h1>C/C++ Module Creator</h1></td>
+</tr>
+</table>
 
 An extension of quickly creating templated C/C++ modules to reduce amount of manual work.
 
