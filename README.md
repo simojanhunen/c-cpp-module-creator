@@ -1,4 +1,4 @@
-# <img src="assets/icon.png" alt="C/C++ Module Creator icon" width="32" height="32" /> C/C++ Module Creator
+# <img src="assets/icon-transparent.png" alt="C/C++ Module Creator icon" width="48" height="48" /> C/C++ Module Creator
 
 An extension of quickly creating templated C/C++ modules to reduce amount of manual work.
 
